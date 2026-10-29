@@ -8,7 +8,7 @@ OUTPUT = "exports/healthy_clean.json"
 ADULT = re.compile(
     r'18|AV|福利|伦理|色情|无码|成人|黄色|黑丝|诱惑|麻豆|四虎|香蕉|蜜桃|猫爪|暗网|'
     r'pornhub|xvideos|souav|chaturbate|kxgav|msnii|gdlsp|xrbsp|香奶|白嫖|'
-    r'美少女|嫖|ikun|IK|成人直播|台湾成人|主播|直播🔞|有码|国产精品|日韩|欧美精品|'
+    r'美少女|嫖|ikun|IK|成人直播|台湾成人|主播|直播🔞|有码|'
     r'中文字幕|制服|人妻|乱伦|强奸|动漫精品|伦理影片|🔞|大秀|女优|TikTok直播|'
     r'裤佬|酷捞|至尊|安博|易发源|哈TV|蝴蝶影视|国产直播|欧美主播|亚洲主播|'
     r'日韩系列|livex|hsck|rwcr|18liv|18\.txt|✨live|冰茶',
