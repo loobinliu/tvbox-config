@@ -42,7 +42,7 @@ def main():
     before = len(data.get("sites", [])), len(data.get("lives", [])), len(data.get("parses", []))
 
     data["sites"]  = [s for s in data.get("sites", [])  if not is_adult_obj(s)]
-    data["lives"]  = [l for l in data.get("lives", [])  if not is_adult_obj(l)]
+    data["lives"]  = []
     data["parses"] = [p for p in data.get("parses", []) if not is_adult_obj(p)]
 
     with open(OUTPUT, "w", encoding="utf-8") as f:
