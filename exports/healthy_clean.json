@@ -1,7 +1,15 @@
 {
   "spider": "./deps/feishu-sync/%E4%B8%80%E6%9C%A8%E6%BA%90/JAR/XB%E5%8C%85jar/LIBVIO.jar;md5;da018b4f9e93e66d29be9ff5013a2059",
   "wallpaper": "https://t.alcy.cc/ys",
-  "lives": [],
+  "lives": [
+    {
+      "name": "成都电信IPTV",
+      "type": 0,
+      "url": "https://iptv.zsdc.eu.org/udpxy/192.168.1.1:4022",
+      "playerType": 1,
+      "epg": "https://epg.zsdc.eu.org/t.xml.gz"
+    }
+  ],
   "parses": [
     {
       "name": "Web聚合",
