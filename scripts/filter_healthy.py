@@ -3,6 +3,7 @@ import json, re, urllib.request, os
 
 UPSTREAM = "https://raw.githubusercontent.com/hebijunge/tvbox-config/main/exports/healthy.json"
 OUTPUT = "exports/healthy_clean.json"
+LIVE_URL = "https://iptv.zsdc.eu.org/udpxy/192.168.1.1:4022"
 
 # 更严格的成人特征
 ADULT = re.compile(
@@ -39,19 +40,30 @@ def main():
     with urllib.request.urlopen(UPSTREAM, timeout=90) as r:
         data = json.load(r)
 
-    before = len(data.get("sites", [])), len(data.get("lives", [])), len(data.get("parses", []))
+    before_sites = len(data.get("sites", []))
+    before_parses = len(data.get("parses", []))
 
     data["sites"]  = [s for s in data.get("sites", [])  if not is_adult_obj(s)]
     data["lives"]  = []
     data["parses"] = [p for p in data.get("parses", []) if not is_adult_obj(p)]
 
+    # 替换为指定的成都电信 IPTV
+    data["lives"] = [
+        {
+            "name": "成都电信IPTV",
+            "type": 0,
+            "url": LIVE_URL,
+            "playerType": 1,
+            "epg": "https://epg.zsdc.eu.org/t.xml.gz"
+        }
+    ]
+
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    after = len(data["sites"]), len(data["lives"]), len(data["parses"])
-    print(f"sites  {before[0]} → {after[0]}")
-    print(f"lives  {before[1]} → {after[1]}")
-    print(f"parses {before[2]} → {after[2]}")
+    print(f"sites  {before_sites} → {len(data['sites'])}")
+    print(f"lives  → 1（已替换为成都电信IPTV）")
+    print(f"parses {before_parses} → {len(data['parses'])}")
 
 if __name__ == "__main__":
     main()
